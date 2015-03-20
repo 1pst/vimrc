@@ -23,17 +23,18 @@ Bundle 'linuxsty.vim'
 
 
 Bundle 'echofunc.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'neocomplcache'
+Bundle 'OmniCppComplete'
+Bundle 'SnipMate'
+
 """"Bundle 'Valloric/YouCompleteMe'
 """"Bundle 'multi.vim'
 """"Bundle 'vim-scripts/AutoClose'
 """"Bundle 'supertab'
 """"Bundle 'code_complete'
 """"Bundle 'superSnipMate'
-"Bundle 'srcexpl'
-Bundle 'scrooloose/syntastic'
-Bundle 'neocomplcache'
-Bundle 'OmniCppComplete'
-Bundle 'SnipMate'
+""""Bundle 'srcexpl'
 
 let m_vimp=".vimp"
 let tagfiles=".vimp/tags"
@@ -53,20 +54,20 @@ set incsearch "实时匹配
 set hlsearch "实时匹配
 "set ignorecase "忽略大小写搜索
 set ignorecase smartcase "smartcase，这样搜索时默认不区分大小写，只有搜索关键字中出现一个大字母时才区分大小写
-set filetype=diff "默认为文本
+set filetype=diff "default file type detection 
 set showmatch  "设置匹配模式，类似当输入一个左括号时会匹配相应的那个右括号
-set ruler "在编辑过程中，在右下角显示光标位置的状态行
+set ruler "show the line and column number of the cursor position
 set autochdir "auto change dir
 set autoread "auto reload
 set foldmethod=manual
-set dir=/tmp
+"set dir=/tmp
 syntax on
 filetype plugin indent on
 "set cursorline
 "set termencoding=encoding
 
 nmap <leader>e <esc>:cd $PWD <CR> :Ack --ignore-dir==.git --type=nohtml <space>
-nmap <leader>f <esc>:cs find t <space>
+nmap <leader>f <esc>:sfind <space>
 nmap <F2> :cp<CR>
 nmap <F3> :cn<CR>
 "nmap <leader>N :cp<CR>
@@ -149,9 +150,6 @@ inoremap <C-v> <esc>"+gpi
 "alt remap
 nmap 1 <ESC>:%! xxd -r<CR>
 nmap 4 <ESC>:set modifiable<CR> <ESC>:%! xxd<CR>
-"auto generated gitignore
-nmap 5 <ESC>:cd $PWD <CR> :!echo -e "\#vim files \n*.swp\n*.mark\ntags\ncscope.*\n\n\n\n \#backup files\n*.bak \n\n\n\# Compiled source \n*.o\n*.elf\n*.ko\n*.so\n*.com\n*.class\n*.dll\n*.exe\n\n\n\n\n\# Packages \#\#\#\#\#\#\#\#\#\#\#\#\#\n\# it's better to unpack these files and commit the raw source\n\# git has its own built in compression methods\n*.7z\n*.dmg\n*.gz\n*.iso\n*.jar\n*.rar\n*.tar\n*.zip\n*.bz2\n*.xz\n\n\n\n\# Logs and databases \# \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#*.sql\n*.sqlite\n\n\n\n\n\#self file\n\#.gitignore\n\n\n\n\n\# OS generated files\#\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n.DS_Store*\nehthumbs.db\nIcon?\nThumbs.db\n\#project files\n *.project\n\n\n\n\#source insight\n*.IAB\n*.IAD\n*.IMB\n*.IMD\n*.PFI\n*.PO\n*.PR\n*.PRI\n*.PS\n*.SearchResults\n*.WK3\n\n\#else\n\n*.mcs\n*.mptags\n*.tagsrc\n*.O\n*.cof\n*.err\n*.lst\n*.map\n*.dep\n*.as\n*.hxl\n*.pre\n*.p1\n*.rlf\n*.sym\n*.sdb\n*.obj\nfunclist\n\n\n\n\n\n\n\n\#\#\#\#\3\n\!*.c\n\!*.h\n \n\n">gitignoret <cr>:bel split gitignoret<cr><cr>
-
 "
 "inoremap <C-v> <esc>"+gPk
 ""{
@@ -179,7 +177,11 @@ nmap 5 <ESC>:cd $PWD <CR> :!echo -e "\#vim files \n*.swp\n*.mark\ntags\ncscope.
 ""}
  
 
-nmap 6 <ESC>:cd $PWD <CR> :!echo -e "\#A simple makefile which automatic generation by fred.\nCROSS = \nCC ?= \$(CROSS)gcc\napp = \n\nsrc = \n\nobjs = \$(src:.c=.o) \n\nCFLAGS = -g -Wall \n\n\%.o : \%.c \n\t\$(CC) \$(CFLAGS) -c $< -o \$@ \n\n\$(app) : \$(objs) \n\t\$(CC) \$(CFLAGS) \$^ -o \$@ \n\nclean:\n\t@rm -rf \$(objs) \$(app)\n\t@echo clean finished.\n\n">Makefilet <cr>:bel split Makefilet<cr><cr>
+nmap 5 <ESC>:cd $PWD <CR> :!echo -e "\#A simple makefile which automatic generation by fred.\nCROSS = \nCC ?= \$(CROSS)gcc\napp = \n\nsrc = \n\nobjs = \$(src:.c=.o) \n\nCFLAGS = -g -Wall \n\n\%.o : \%.c \n\t\$(CC) \$(CFLAGS) -c $< -o \$@ \n\n\$(app) : \$(objs) \n\t\$(CC) \$(CFLAGS) \$^ -o \$@ \n\nclean:\n\t@rm -rf \$(objs) \$(app)\n\t@echo clean finished.\n\n">Makefilet <cr>:bel split Makefilet<cr><cr>
+
+"auto generated gitignore
+nmap 6 <ESC>:cd $PWD <CR> :!echo -e "\#vim files \n*.swp\n*.mark\ntags\ncscope.*\n\n\n\n \#backup files\n*.bak \n\n\n\# Compiled source \n*.o\n*.elf\n*.ko\n*.so\n*.com\n*.class\n*.dll\n*.exe\n\n\n\n\n\# Packages \#\#\#\#\#\#\#\#\#\#\#\#\#\n\# it's better to unpack these files and commit the raw source\n\# git has its own built in compression methods\n*.7z\n*.dmg\n*.gz\n*.iso\n*.jar\n*.rar\n*.tar\n*.zip\n*.bz2\n*.xz\n\n\n\n\# Logs and databases \# \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#*.sql\n*.sqlite\n\n\n\n\n\#self file\n\#.gitignore\n\n\n\n\n\# OS generated files\#\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n.DS_Store*\nehthumbs.db\nIcon?\nThumbs.db\n\#project files\n *.project\n\n\n\n\#source insight\n*.IAB\n*.IAD\n*.IMB\n*.IMD\n*.PFI\n*.PO\n*.PR\n*.PRI\n*.PS\n*.SearchResults\n*.WK3\n\n\#else\n\n*.mcs\n*.mptags\n*.tagsrc\n*.O\n*.cof\n*.err\n*.lst\n*.map\n*.dep\n*.as\n*.hxl\n*.pre\n*.p1\n*.rlf\n*.sym\n*.sdb\n*.obj\nfunclist\n\n\n\n\n\n\n\n\#\#\#\#\3\n\!*.c\n\!*.h\n \n\n">gitignoret <cr>:bel split .gitignoret<cr><cr>
+
 
 
 nmap 2 <ESC>:prev<CR>
@@ -289,10 +291,10 @@ nnoremap <silent> <F8> : NERDTreeToggle<CR>
 "nnoremap <silent> <F7> : NERDTreeToggle<CR>
 "nnoremap <F7> : NERDTreeToggle<CR>
 let NERDTreeWinSize=20
-let g:NERDChristmasTree=1 "色彩显示
-let g:NERDTreeShowHidden=1 "显示隐藏文件
-let g:NERDTreeWinPos='right'   "窗口显示右边
-let g:NERDTreeHighlightCursorline=0 "高亮当前行
+let g:NERDChristmasTree=1 
+let g:NERDTreeShowHidden=1 
+let g:NERDTreeWinPos='right'  
+let g:NERDTreeHighlightCursorline=0 
 let g:NERDTreeDirArrows=1
 "let NERDTreeShowBookmarks=1 
 let NERDTreeAutoCenter=1
