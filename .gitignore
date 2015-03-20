@@ -1,0 +1,110 @@
+#vim files 
+*.swp
+*.mark
+tags
+cscope.*
+
+
+
+ #backup files
+*.bak 
+
+
+# Compiled source 
+*.o
+*.elf
+*.ko
+*.so
+*.com
+*.class
+*.dll
+*.exe
+
+
+
+
+# Packages #############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.bz2
+*.xz
+
+
+
+# Logs and databases # ######################*.sql
+*.sqlite
+
+
+
+
+#self file
+#.gitignore
+
+
+
+
+# OS generated files#
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+#project files
+ *.project
+
+
+
+#source insight
+*.IAB
+*.IAD
+*.IMB
+*.IMD
+*.PFI
+*.PO
+*.PR
+*.PRI
+*.PS
+*.SearchResults
+*.WK3
+
+#else
+
+*.mcs
+*.mptags
+*.tagsrc
+*.O
+*.cof
+*.err
+*.lst
+*.map
+*.dep
+*.as
+*.hxl
+*.pre
+*.p1
+*.rlf
+*.sym
+*.sdb
+*.obj
+funclist
+
+
+
+
+
+
+
+####\3
+!*.c
+!*.h
+ 
+
+
