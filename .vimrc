@@ -67,7 +67,7 @@ filetype plugin indent on
 "set termencoding=encoding
 
 nmap <leader>e <esc>:cd $PWD <CR> :Ack --ignore-dir==.git --type=nohtml <space>
-nmap <leader>f <esc>:sfind <space>
+nmap <leader>f <esc>:sp <CR>:cd $PWD <CR> :find <space>
 nmap <F2> :cp<CR>
 nmap <F3> :cn<CR>
 "nmap <leader>N :cp<CR>

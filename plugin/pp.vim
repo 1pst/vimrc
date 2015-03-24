@@ -18,7 +18,7 @@ if !exists("g:AutoList_enabled")
 endif
 function! AutoToggleList()
     if g:AutoList_enabled
-		setlocal listchars=tab:>-,eol:<,nbsp:%,trail:-
+		setlocal listchars=tab:>-,eol:<,nbsp:%,trail:@
 		setlocal list
     else 
 		setlocal nolist
