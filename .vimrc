@@ -60,7 +60,7 @@ set ruler "show the line and column number of the cursor position
 set autochdir "auto change dir
 set autoread "auto reload
 set foldmethod=manual
-"set dir=/tmp
+set dir=/tmp
 syntax on
 filetype plugin indent on
 "set cursorline
@@ -224,6 +224,7 @@ nnoremap <leader>v <esc>:r /tmp/buf<CR>
 
 inoremap <c-s> <Esc>:w!<CR>k
 
+map <F4> :! nautilus . <CR> 
 "nnoremap <silent> <F5><F5> :cd $PWD <CR> :make clean -f $PWD/*akefile <CR> :bel copen <CR>
 nnoremap <silent> <F12> :cd $PWD <CR><esc> :make clean -f $PWD/*akefile <CR><esc> :bel copen <CR><esc>
 "nnoremap <silent> 4 :cd $PWD <CR> :make clean -f $PWD/*akefile <CR> ::copen <CR>
