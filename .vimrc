@@ -36,8 +36,6 @@ Bundle 'SnipMate'
 """"Bundle 'superSnipMate'
 """"Bundle 'srcexpl'
 
-let m_vimp=".vimp"
-let tagfiles=".vimp/tags"
 
 let mapleader=","
 set backspace=indent,eol,start 
@@ -50,12 +48,12 @@ set mouse=a
 set tabstop=4
 "set expandtab
 set shiftwidth=4
-set incsearch "实时匹配
-set hlsearch "实时匹配
-"set ignorecase "忽略大小写搜索
-set ignorecase smartcase "smartcase，这样搜索时默认不区分大小写，只有搜索关键字中出现一个大字母时才区分大小写
+set incsearch "match in time 
+set hlsearch "
+"set ignorecase 
+set ignorecase smartcase "smartcase，
 set filetype=diff "default file type detection 
-set showmatch  "设置匹配模式，类似当输入一个左括号时会匹配相应的那个右括号
+set showmatch  "
 set ruler "show the line and column number of the cursor position
 set autochdir "auto change dir
 set autoread "auto reload
@@ -65,6 +63,11 @@ syntax on
 filetype plugin indent on
 "set cursorline
 "set termencoding=encoding
+"alias vi='export VIMP_PATH=$PWD/.vimp; export _KERNINC=/media/working/prj/imx6/kernel/include;vim'
+"alias vim='export VIMP_PATH=$PWD/.vimp; export _KERNINC=/media/working/prj/imx6/kernel/include;vim'
+let prj_dir=$PWD
+let vimp_name=strpart($VIMP_PATH,strridx($VIMP_PATH,"/") + 1)
+let tagfiles=$VIMP_PATH . '/tags'
 
 nmap <leader>e <esc>:cd $PWD <CR> :Ack --ignore-dir==.git --type=nohtml <space>
 nmap <leader>f <esc>:sp <CR>:cd $PWD <CR> :find <space>
@@ -147,9 +150,6 @@ inoremap <C-v> <esc>"+gpi
 
 
 
-"alt remap
-nmap 1 <ESC>:%! xxd -r<CR>
-nmap 4 <ESC>:set modifiable<CR> <ESC>:%! xxd<CR>
 "
 "inoremap <C-v> <esc>"+gPk
 ""{
@@ -176,6 +176,9 @@ nmap 4 <ESC>:set modifiable<CR> <ESC>:%! xxd<CR>
 "	@echo clean finished.
 ""}
  
+"alt remap
+nmap 1 <ESC>:%! xxd -r<CR>
+nmap 4 <ESC>:set modifiable<CR> <ESC>:%! xxd<CR>
 
 nmap 5 <ESC>:cd $PWD <CR> :!echo -e "\#A simple makefile which automatic generation by fred.\nCROSS = \nCC ?= \$(CROSS)gcc\napp = \n\nsrc = \n\nobjs = \$(src:.c=.o) \n\nCFLAGS = -g -Wall \n\n\%.o : \%.c \n\t\$(CC) \$(CFLAGS) -c $< -o \$@ \n\n\$(app) : \$(objs) \n\t\$(CC) \$(CFLAGS) \$^ -o \$@ \n\nclean:\n\t@rm -rf \$(objs) \$(app)\n\t@echo clean finished.\n\n">Makefilet <cr>:bel split Makefilet<cr><cr>
 
@@ -186,16 +189,13 @@ nmap 6 <ESC>:cd $PWD <CR> :!echo -e "\#vim files \n*.swp\n*.mark\ntags\ncscope.
 
 nmap 2 <ESC>:prev<CR>
 nmap 3 <ESC>:next<CR>
-nmap 7 <ESC>:cd $PWD <CR><esc>:cscope add .vimp/cscope.out <CR><esc> 
 
-nmap 9 <ESC>:cd $PWD <CR><esc> :cs kill -1 <CR><esc> :!rm -rf .vimp/*cscope* .vimp/tags <CR><esc>
+"""custom variable
+"let prj_dir=$PWD
+nmap 7 <ESC>:cscope add $VIMP_PATH/cscope.out <cr>
 
-"nmap 7 <ESC>:cscope add escape(g:m_vimp)/cscope.out <cr>
-"nmap 8 <ESC>:! git commit  
-"nmap 9 <ESC>:e! <CR>
-"nmap 0 <ESC>:cd $PWD <CR> :cs kill -1 <CR> :!rm -rf cscope.* <CR> :!rm -rf tags<CR>
-"
-"nnoremap <c-g> <esc>ggVG
+nmap 9 <ESC>:cs kill -1 <CR><esc> :!rm -rf $VIMP_PATH/*cscope* $VIMP_PATH/tags <CR><esc>
+
 
 
 
@@ -242,8 +242,7 @@ nnoremap <silent> <F5> :cd $PWD <CR><esc> :make -f $PWD/*akefile <CR><esc>:bel c
 
 "nnoremap <silent> <F9> <Esc> :cd $PWD <CR> :!ctags -R --fields=+lS --languages=c++ --langmap=c++:+.c -h +.mk --c++-kinds=+pdx --fields=+aiKSz --extra=+q --exclude=*.c.* --exclude=*.h.* <CR> :!find $PWD/ -name "*akefile" -o -name "*.c" -o -name "*.h" -o -name "*.s" -o -name "*.S">cscope.files <CR> : !cscope -RbkUq -f cscope.out <CR> :cs add cscope.out <CR>
 "nnoremap <silent> <F9> <Esc> :cd $PWD <CR><esc> :!mkdir -p .vimp <CR><esc> :!find $PWD/ -name "*akefile" -o -name "*.c" -o -name "*.cpp" -o -name "*.cc" -o -name "*.h" -o -name "*.s" -o -name "*.S" -o -name "*.dts*" >./.vimp/cscope.files <CR><esc> :cd .vimp  <CR><esc> : !cscope -RbkUq -f cscope.out <CR><esc>: cs add cscope.out <CR><esc> :!ctags --fields=+lS --languages=c++ --langmap=c++:+.c -h +.mk --c++-kinds=+pdx --fields=+aiKSz --extra=+q -L -<cscope.files <CR><esc>
-nnoremap <silent> <F9> <Esc> :cd $PWD <CR><esc> :!mkdir -p .vimp <CR><esc> :!find $PWD/ \( -path $PWD/arch/alpha -o -path $PWD/arch/arc -o -path  $PWD/arch/avr32 -o -path  $PWD/arch/blackfin -o -path  $PWD/arch/c6x -o -path  $PWD/arch/cris -o -path  $PWD/arch/frv -o -path  $PWD/arch/h8300 -o -path  $PWD/arch/hexagon -o -path  $PWD/arch/ia64 -o -path  $PWD/arch/m32r -o -path  $PWD/arch/m68k -o -path  $PWD/arch/metag -o -path  $PWD/arch/microblaze -o -path  $PWD/arch/mips -o -path  $PWD/arch/mn10300 -o -path  $PWD/arch/openrisc -o -path  $PWD/arch/parisc -o -path  $PWD/arch/powerpc -o -path  $PWD/arch/s390 -o -path  $PWD/arch/score -o -path  $PWD/arch/sh -o -path  $PWD/arch/tile -o -path  $PWD/arch/sparc -o -path  $PWD/arch/um -o -path  $PWD/arch/unicore32 -o -path  $PWD/arch/x86 -o -path  $PWD/arch/xtensa \) -prune -o \( -name "*akefile" -o -name "*.c" -o -name "*.C" -o -name "*.cpp" -name "*.CPP" -o -name "*.cc" -o -name "*.CC" -o -name "*.h" -o -name "*.H" -o -name "*.s" -o -name "*.S" -o -name "*.asm" -o -name "*.ASM" -o -name "*defconfig" -o -name ".config" -o -name "config.mk" -o -name "*.dts*" \) -type f -print >./.vimp/cscope.files <CR><esc> :cd .vimp  <CR><esc> : !cscope -RbkUq -f cscope.out <CR><esc>: cs add cscope.out <CR><esc> :!ctags --fields=+lS -L -<cscope.files <CR><esc>
-"nnoremap <silent> <F9> <Esc> :cd $PWD <CR><esc> :!mkdir -p .vimp <CR><esc> :!find $PWD/ \( -path $PWD/arch/alpha -o -path $PWD/arch/arc -o -path  $PWD/arch/avr32 -o -path  $PWD/arch/blackfin -o -path  $PWD/arch/c6x -o -path  $PWD/arch/cris -o -path  $PWD/arch/frv -o -path  $PWD/arch/h8300 -o -path  $PWD/arch/hexagon -o -path  $PWD/arch/ia64 -o -path  $PWD/arch/m32r -o -path  $PWD/arch/m68k -o -path  $PWD/arch/metag -o -path  $PWD/arch/microblaze -o -path  $PWD/arch/mips -o -path  $PWD/arch/mn10300 -o -path  $PWD/arch/openrisc -o -path  $PWD/arch/parisc -o -path  $PWD/arch/powerpc -o -path  $PWD/arch/s390 -o -path  $PWD/arch/score -o -path  $PWD/arch/sh -o -path  $PWD/arch/tile -o -path  $PWD/arch/sparc -o -path  $PWD/arch/um -o -path  $PWD/arch/unicore32 -o -path  $PWD/arch/x86 -o -path  $PWD/arch/xtensa \) -prune -o \( -name "*akefile" -o -name "*.c" -o -name "*.C" -o -name "*.cpp" -name "*.CPP" -o -name "*.cc" -o -name "*.CC" -o -name "*.h" -o -name "*.H" -o -name "*.s" -o -name "*.S" -o -name "*.asm" -o -name "*.ASM" -o -name "*defconfig" -o -name ".config" -o -name "config.mk" -o -name "*.dts*" \) -type f -print >./.vimp/cscope.files <CR><esc> :cd .vimp  <CR><esc> : !cscope -RbkUq -f cscope.out <CR><esc>: cs add cscope.out <CR><esc> :!ctags --fields=+lS --languages=c++ --langmap=c++:+.c -h +.mk --c++-kinds=+pdx --fields=+aiKSz --extra=+q -L -<cscope.files <CR><esc>
+nnoremap <silent> <F9> <Esc> :cd $PWD <CR><esc> :!mkdir -p $VIMP_PATH <CR><esc> :!find $PWD/ \( -path $PWD/arch/alpha -o -path $PWD/arch/arc -o -path  $PWD/arch/avr32 -o -path  $PWD/arch/blackfin -o -path  $PWD/arch/c6x -o -path  $PWD/arch/cris -o -path  $PWD/arch/frv -o -path  $PWD/arch/h8300 -o -path  $PWD/arch/hexagon -o -path  $PWD/arch/ia64 -o -path  $PWD/arch/m32r -o -path  $PWD/arch/m68k -o -path  $PWD/arch/metag -o -path  $PWD/arch/microblaze -o -path  $PWD/arch/mips -o -path  $PWD/arch/mn10300 -o -path  $PWD/arch/openrisc -o -path  $PWD/arch/parisc -o -path  $PWD/arch/powerpc -o -path  $PWD/arch/s390 -o -path  $PWD/arch/score -o -path  $PWD/arch/sh -o -path  $PWD/arch/tile -o -path  $PWD/arch/sparc -o -path  $PWD/arch/um -o -path  $PWD/arch/unicore32 -o -path  $PWD/arch/x86 -o -path  $PWD/arch/xtensa \) -prune -o \( -name "*akefile" -o -name "*.c" -o -name "*.C" -o -name "*.cpp" -name "*.CPP" -o -name "*.cc" -o -name "*.CC" -o -name "*.h" -o -name "*.H" -o -name "*.s" -o -name "*.S" -o -name "*.asm" -o -name "*.ASM" -o -name "*defconfig" -o -name ".config" -o -name "config.mk" -o -name "*.dts*" \) -type f -print >$VIMP_PATH/cscope.files <CR><esc> :cd $VIMP_PATH  <CR><esc> : !cscope -RbkUq -f cscope.out <CR><esc>: cs add cscope.out <CR><esc> :!ctags --fields=+lS -L -<cscope.files <CR><esc>
 
 ":cs kill cscope.out <CR> 
 "nnoremap <silent> <F9> <Esc> :cd $PWD <CR> :! ctags -R --c-kinds=+pdx --fields=+iaS --extra=+q <CR>
@@ -252,7 +251,7 @@ nnoremap <silent> <F9> <Esc> :cd $PWD <CR><esc> :!mkdir -p .vimp <CR><esc> :!fin
 
 
 ""{vbookmark
-let g:vbookmark_bookmarkSaveFile=expand('$PWD/.vimp') . '/.vbookmark.mark'
+let g:vbookmark_bookmarkSaveFile=$VIMP_PATH . '/.vbookmark.mark'
 "let g:vbookmark_bookmarkSaveFile=expand('$PWD') . '/.vbookmark.mark'
 
 ""}
@@ -548,7 +547,7 @@ set path+=../**/**
 "map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 set statusline=%<%f\ [%{&fileencoding}]\ %h%m%r%=0x%B\ \ %-16.(%l-%L,%c%V%)\ %P
-set tags=$PWD/.vimp/tags
+set tag=expand(tagfiles)
 "set tags=$PWD/tags;
 
 
