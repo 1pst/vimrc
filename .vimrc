@@ -547,7 +547,8 @@ set path+=../**/**
 "map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 set statusline=%<%f\ [%{&fileencoding}]\ %h%m%r%=0x%B\ \ %-16.(%l-%L,%c%V%)\ %P
-set tag=expand(tagfiles)
+set tags=$VIMP_PATH/tags
+"set tags=expand(tagfiles)
 "set tags=$PWD/tags;
 
 
