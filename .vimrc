@@ -65,10 +65,7 @@ filetype plugin indent on
 "set termencoding=encoding
 "alias vi='export VIMP_PATH=$PWD/.vimp; export _KERNINC=/media/working/prj/imx6/kernel/include;vim'
 "alias vim='export VIMP_PATH=$PWD/.vimp; export _KERNINC=/media/working/prj/imx6/kernel/include;vim'
-let prj_dir=$PWD
-let vimp_name=strpart($VIMP_PATH,strridx($VIMP_PATH,"/") + 1)
 let tagfiles=$VIMP_PATH . '/tags'
-
 nmap <leader>e <esc>:cd $PWD <CR> :Ack --ignore-dir==.git --type=nohtml <space>
 nmap <leader>f <esc>:sp <CR>:cd $PWD <CR> :find <space>
 nmap <F2> :cp<CR>
@@ -194,6 +191,8 @@ nmap 3 <ESC>:next<CR>
 "let prj_dir=$PWD
 nmap 7 <ESC>:cscope add $VIMP_PATH/cscope.out <cr>
 
+nmap 8 <ESC>:!tar cjvf vim.tar.bz2 ~/.vim; nautilus ~
+
 nmap 9 <ESC>:cs kill -1 <CR><esc> :!rm -rf $VIMP_PATH/*cscope* $VIMP_PATH/tags <CR><esc>
 
 
@@ -203,21 +202,7 @@ nmap 9 <ESC>:cs kill -1 <CR><esc> :!rm -rf $VIMP_PATH/*cscope* $VIMP_PATH/tags 
 
 nmap <s-tab> <esc>:tabNext<CR>
 
-"nmap <C-tab> :tabNext<CR>
-"map <C-h> <Esc>:%s/
-"nnoremap <C-4> <esc>:q<CR>
-"inoremap <C-4> <esc>:q<CR>
-"vnoremap <C-c> :w! /tmp/buf<CR>
-"inoremap <C-v> <esc>:r /tmp/buf<CR>
-"nnoremap <C-v> "+gP 
-
-"nnoremap <C-160> :tselect<CR>
-"nmap <c-m> :tselect<CR>
-
-"nmap <c-u> :
 nmap <c-d> :tselect <CR>
-"nnoremap <C-7> :tselect<CR>
-"nnoremap <C-x> :tselect<CR> tselectval <CR> tselectval+=1<cr>
 vmap <leader>c : w! /tmp/buf<CR>
 nnoremap <leader>v <esc>:r /tmp/buf<CR>
 "nmap <leader>v <esc>:r /tmp/buf<CR>
@@ -227,21 +212,7 @@ inoremap <c-s> <Esc>:w!<CR>k
 map <F4> :! nautilus . <CR> 
 "nnoremap <silent> <F5><F5> :cd $PWD <CR> :make clean -f $PWD/*akefile <CR> :bel copen <CR>
 nnoremap <silent> <F12> :cd $PWD <CR><esc> :make clean -f $PWD/*akefile <CR><esc> :bel copen <CR><esc>
-"nnoremap <silent> 4 :cd $PWD <CR> :make clean -f $PWD/*akefile <CR> ::copen <CR>
-"vnoremap <silent> 4 :cd $PWD <CR> :make clean -f $PWD/*akefile <CR> ::copen <CR>
-"nnoremap <silent> <F6> :cd $PWD <CR> :make clean -f $PWD/*akefile <CR> ::copen <CR>
-"map <silent> <F4> :cd $PWD <CR> :make clean -f $PWD/*akefile <CR> ::copen <CR> <esc> <c-w>k <esc>G
-"map <silent> <F4> :cd $PWD <CR> :make clean -f $PWD/*akefile <CR> ::copen <CR> 
 nnoremap <silent> <F5> :cd $PWD <CR><esc> :make -f $PWD/*akefile <CR><esc>:bel copen <CR><esc>
-"map <silent> <F5> <c-l> :cd $PWD <CR> :make -f $PWD/*akefile <CR> :bel copen <CR>
-"nnoremap <silent> <F5> :cd $PWD <CR> :make -f $PWD/*akefile <CR> ::copen <CR> <esc> G
-"map <silent> <F5> :cd $PWD <CR> :make -f $PWD/*akefile <CR> ::copen <CR> <esc> G
-"map <F4> :vsplit<CR> <C-w>l :edit<space> 
-"map <F4> :vsplit<CR> <C-l> :edit<space> 
-"nnoremap <silent> <F9> <Esc> :cd $PWD <CR> : !ctags -R --fields=+lS --languages=c++ --langmap=c++:+.c -h +.mk --c++-kinds=+pdx --fields=+aiKSz --extra=+q --exclude=*.c.* --exclude=*.h.* <CR> :!find $PWD/ -name "*akefile" -o -name "*.h" -o -name "*.s" -o -name "*.S">cscope.files <CR>: !cs kill -1 <CR> :!cscope -bkq <CR> :cs add cscope.out <CR>
-
-"nnoremap <silent> <F9> <Esc> :cd $PWD <CR> :!ctags -R --fields=+lS --languages=c++ --langmap=c++:+.c -h +.mk --c++-kinds=+pdx --fields=+aiKSz --extra=+q --exclude=*.c.* --exclude=*.h.* <CR> :!find $PWD/ -name "*akefile" -o -name "*.c" -o -name "*.h" -o -name "*.s" -o -name "*.S">cscope.files <CR> : !cscope -RbkUq -f cscope.out <CR> :cs add cscope.out <CR>
-"nnoremap <silent> <F9> <Esc> :cd $PWD <CR><esc> :!mkdir -p .vimp <CR><esc> :!find $PWD/ -name "*akefile" -o -name "*.c" -o -name "*.cpp" -o -name "*.cc" -o -name "*.h" -o -name "*.s" -o -name "*.S" -o -name "*.dts*" >./.vimp/cscope.files <CR><esc> :cd .vimp  <CR><esc> : !cscope -RbkUq -f cscope.out <CR><esc>: cs add cscope.out <CR><esc> :!ctags --fields=+lS --languages=c++ --langmap=c++:+.c -h +.mk --c++-kinds=+pdx --fields=+aiKSz --extra=+q -L -<cscope.files <CR><esc>
 nnoremap <silent> <F9> <Esc> :cd $PWD <CR><esc> :!mkdir -p $VIMP_PATH <CR><esc> :!find $PWD/ \( -path $PWD/arch/alpha -o -path $PWD/arch/arc -o -path  $PWD/arch/avr32 -o -path  $PWD/arch/blackfin -o -path  $PWD/arch/c6x -o -path  $PWD/arch/cris -o -path  $PWD/arch/frv -o -path  $PWD/arch/h8300 -o -path  $PWD/arch/hexagon -o -path  $PWD/arch/ia64 -o -path  $PWD/arch/m32r -o -path  $PWD/arch/m68k -o -path  $PWD/arch/metag -o -path  $PWD/arch/microblaze -o -path  $PWD/arch/mips -o -path  $PWD/arch/mn10300 -o -path  $PWD/arch/openrisc -o -path  $PWD/arch/parisc -o -path  $PWD/arch/powerpc -o -path  $PWD/arch/s390 -o -path  $PWD/arch/score -o -path  $PWD/arch/sh -o -path  $PWD/arch/tile -o -path  $PWD/arch/sparc -o -path  $PWD/arch/um -o -path  $PWD/arch/unicore32 -o -path  $PWD/arch/x86 -o -path  $PWD/arch/xtensa \) -prune -o \( -name "*akefile" -o -name "*.c" -o -name "*.C" -o -name "*.cpp" -name "*.CPP" -o -name "*.cc" -o -name "*.CC" -o -name "*.h" -o -name "*.H" -o -name "*.s" -o -name "*.S" -o -name "*.asm" -o -name "*.ASM" -o -name "*defconfig" -o -name ".config" -o -name "config.mk" -o -name "*.dts*" \) -type f -print >$VIMP_PATH/cscope.files <CR><esc> :cd $VIMP_PATH  <CR><esc> : !cscope -RbkUq -f cscope.out <CR><esc>: cs add cscope.out <CR><esc> :!ctags --fields=+lS -L -<cscope.files <CR><esc>
 
 ":cs kill cscope.out <CR> 
@@ -529,7 +500,7 @@ let g:neocomplcache_enable_quick_match = 1
 
 
 
-"记住 最后一次编辑位置 
+""local last edit
 :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 set mps+=<:>            "让<>可以使用%跳转  
