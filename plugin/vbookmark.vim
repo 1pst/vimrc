@@ -419,7 +419,7 @@ if !exists('g:vbookmark_disableMapping')
 	nnoremap <silent> ml :VbookmarkToggle<CR>
 	nnoremap <silent> mn :VbookmarkNext<CR>
 	nnoremap <silent> mk :VbookmarkPrevious<CR>
-	nnoremap <silent> mc :VbookmarkClearAll<CR>
+	nnoremap <silent> m0 :VbookmarkClearAll<CR>
 endif
 
 let &cpo = s:savedCpo

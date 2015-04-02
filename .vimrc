@@ -44,9 +44,9 @@ set nu
 set ai
 set cindent
 set mouse=a
-set tabstop=4
-"set expandtab
-set shiftwidth=4
+set tabstop=8
+set expandtab
+set shiftwidth=8
 set incsearch "match in time 
 set hlsearch "
 "set ignorecase 
@@ -131,7 +131,7 @@ nmap 4 <ESC>:set modifiable<CR> <ESC>:%! xxd<CR>
 nmap 5 <ESC>:cd $PWD <CR> :!echo -e "\#A simple makefile which automatic generation by fred.\nCROSS = \nCC ?= \$(CROSS)gcc\napp = \n\nsrc = \n\nobjs = \$(src:.c=.o) \n\nCFLAGS = -g -Wall \n\n\%.o : \%.c \n\t\$(CC) \$(CFLAGS) -c $< -o \$@ \n\n\$(app) : \$(objs) \n\t\$(CC) \$(CFLAGS) \$^ -o \$@ \n\nclean:\n\t@rm -rf \$(objs) \$(app)\n\t@echo clean finished.\n\n">Makefilet <cr>:bel split Makefilet<cr><cr>
 
 "auto generated gitignore
-nmap 6 <ESC>:cd $PWD <CR> :!echo -e "\#vim files \n*.swp\n*.mark\ntags\ncscope.*\n\n\n\n \#backup files\n*.bak \n\n\n\# Compiled source \n*.o\n*.elf\n*.ko\n*.so\n*.com\n*.class\n*.dll\n*.exe\n\n\n\n\n\# Packages \#\#\#\#\#\#\#\#\#\#\#\#\#\n\# it's better to unpack these files and commit the raw source\n\# git has its own built in compression methods\n*.7z\n*.dmg\n*.gz\n*.iso\n*.jar\n*.rar\n*.tar\n*.zip\n*.bz2\n*.xz\n\n\n\n\# Logs and databases \# \#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#*.sql\n*.sqlite\n\n\n\n\n\#self file\n\#.gitignore\n\n\n\n\n\# OS generated files\#\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n.DS_Store*\nehthumbs.db\nIcon?\nThumbs.db\n\#project files\n *.project\n\n\n\n\#source insight\n*.IAB\n*.IAD\n*.IMB\n*.IMD\n*.PFI\n*.PO\n*.PR\n*.PRI\n*.PS\n*.SearchResults\n*.WK3\n\n\#else\n\n*.mcs\n*.mptags\n*.tagsrc\n*.O\n*.cof\n*.err\n*.lst\n*.map\n*.dep\n*.as\n*.hxl\n*.pre\n*.p1\n*.rlf\n*.sym\n*.sdb\n*.obj\nfunclist\n\n\n\n\n\n\n\n\#\#\#\#\3\n\!*.c\n\!*.h\n \n\n">gitignoret <cr>:bel split .gitignoret<cr><cr>
+nmap 6 <ESC>:cd $PWD <CR> :!echo -e "\#vim files \n*.swp\n*.mark\ntags\ncscope.*\n\n\n\n \#backup files\n*.bak \n\n\n\# compiled files \n*.o\n*.elf\n*.ko\n*.so\n*.com\n*.class\n*.dll\n*.exe\n\n\n\n\n\# packages \n*.7z\n*.dmg\n*.gz\n*.iso\n*.jar\n*.rar\n*.tar\n*.zip\n*.bz2\n*.xz\n\n\n\n\# logs and databases \n*.sql\n*.sqlite\n\n\n\n\n\#self file\n\#.gitignore\n\n\n\n\n\# os generated files\#\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\nThumbs.db\n\#project files\n *.project\n\n\n\n\#source insight\n*.IAB\n*.IAD\n*.IMB\n*.IMD\n*.PFI\n*.PO\n*.PR\n*.PRI\n*.PS\n*.SearchResults\n*.WK3\n\n\#else\n\n*.mcs\n*.mptags\n*.tagsrc\n*.O\n*.cof\n*.err\n*.lst\n*.map\n*.dep\n*.as\n*.hxl\n*.pre\n*.p1\n*.rlf\n*.sym\n*.sdb\n*.obj\n\n\n\n\#current project \n\n\n\n\#funclist\n\n\n\n\n\n\n\n\#\#\#\#\3\n\!*.c\n\!*.h\n \n\n">gitignore <cr>:bel split gitignore<cr><cr>
 
 nmap 2 <ESC>:prev<CR>
 nmap 3 <ESC>:next<CR>
@@ -141,7 +141,7 @@ nmap 7 <ESC>:cscope add $VIMP_PATH/cscope.out <cr>
 
 nmap 9 <ESC>:cs kill -1 <CR><esc> :!rm -rf $VIMP_PATH/*cscope* $VIMP_PATH/tags <CR><esc>
 
-nmap - <ESC>:cd ~ <cr> <esc>:!tar cjf vim.tar.bz2 .vim ;nautilus ~ <CR>
+nmap _ <ESC>:cd ~ <cr> <esc>:!tar cjf vim.tar.bz2 .vim ;nautilus ~ <CR>
 
 nmap + <ESC>:!echo "alias vi='export VIMP_PATH=\$PWD/.vimp; export _KERNINC=/media/working/prj/imx6/kernel/include;vim'" >> ~/.bashrc
 
@@ -163,10 +163,10 @@ nmap <F2> :cp<CR>
 nmap <F3> :cn<CR>
 map <F4> :! nautilus . <CR>
 "nnoremap <silent> <F5><F5> :cd $PWD <CR> :make clean -f $PWD/*akefile <CR> :bel copen <CR>
-nnoremap <silent> <F12> :cd $PWD <CR><esc> :make clean -f $PWD/*akefile <CR><esc> :bel copen <CR><esc>
-nnoremap <silent> <F5> :cd $PWD <CR><esc> :make -f $PWD/*akefile <CR><esc>:bel copen <CR><esc>
-nnoremap <silent> <F9> <Esc> :cd $PWD <CR><esc> :!mkdir -p $VIMP_PATH <CR><esc> :!find $PWD/ \( -path $PWD/arch/alpha -o -path $PWD/arch/arc -o -path  $PWD/arch/avr32 -o -path  $PWD/arch/blackfin -o -path  $PWD/arch/c6x -o -path  $PWD/arch/cris -o -path  $PWD/arch/frv -o -path  $PWD/arch/h8300 -o -path  $PWD/arch/hexagon -o -path  $PWD/arch/ia64 -o -path  $PWD/arch/m32r -o -path  $PWD/arch/m68k -o -path  $PWD/arch/metag -o -path  $PWD/arch/microblaze -o -path  $PWD/arch/mips -o -path  $PWD/arch/mn10300 -o -path  $PWD/arch/openrisc -o -path  $PWD/arch/parisc -o -path  $PWD/arch/powerpc -o -path  $PWD/arch/s390 -o -path  $PWD/arch/score -o -path  $PWD/arch/sh -o -path  $PWD/arch/tile -o -path  $PWD/arch/sparc -o -path  $PWD/arch/um -o -path  $PWD/arch/unicore32 -o -path  $PWD/arch/x86 -o -path  $PWD/arch/xtensa \) -prune -o \( -name "*akefile" -o -name "*.c" -o -name "*.C" -o -name "*.cpp" -name "*.CPP" -o -name "*.cc" -o -name "*.CC" -o -name "*.h" -o -name "*.H" -o -name "*.s" -o -name "*.S" -o -name "*.asm" -o -name "*.ASM" -o -name "*defconfig" -o -name ".config" -o -name "config.mk" -o -name "*.dts*" \) -type f -print >$VIMP_PATH/cscope.files <CR><esc> :cd $VIMP_PATH  <CR><esc> : !cscope -RbkUq -f cscope.out <CR><esc>: cs add cscope.out <CR><esc> :!ctags --fields=+lS -L -<cscope.files <CR><esc>
-
+nnoremap <silent> <F12> :cd $PWD <CR><esc> :make clean -f $PWD/?akefile <CR><esc> :bel copen <CR><esc>
+nnoremap <silent> <F5> :cd $PWD <CR><esc> :make -f $PWD/?akefile <CR><esc>:bel copen <CR><esc>
+"echo "Attention: according to kernel,only generate arch of ARM index"
+nnoremap <silent> <F9> <Esc>:cd $PWD <CR><esc> :!mkdir -p $VIMP_PATH <CR><esc> :!find $PWD/ \( -path $PWD/arch/alpha -o -path $PWD/arch/arc -o -path  $PWD/arch/avr32 -o -path  $PWD/arch/blackfin -o -path  $PWD/arch/c6x -o -path  $PWD/arch/cris -o -path  $PWD/arch/frv -o -path  $PWD/arch/h8300 -o -path  $PWD/arch/hexagon -o -path  $PWD/arch/ia64 -o -path  $PWD/arch/m32r -o -path  $PWD/arch/m68k -o -path  $PWD/arch/metag -o -path  $PWD/arch/microblaze -o -path  $PWD/arch/mips -o -path  $PWD/arch/mn10300 -o -path  $PWD/arch/openrisc -o -path  $PWD/arch/parisc -o -path  $PWD/arch/powerpc -o -path  $PWD/arch/s390 -o -path  $PWD/arch/score -o -path  $PWD/arch/sh -o -path  $PWD/arch/tile -o -path  $PWD/arch/sparc -o -path  $PWD/arch/um -o -path  $PWD/arch/unicore32 -o -path  $PWD/arch/x86 -o -path  $PWD/arch/xtensa \) -prune -o \( -name "*akefile" -o -name "*.c" -o -name "*.C" -o -name "*.cpp" -name "*.CPP" -o -name "*.cc" -o -name "*.CC" -o -name "*.h" -o -name "*.H" -o -name "*.s" -o -name "*.S" -o -name "*.asm" -o -name "*.ASM" -o -name "*defconfig" -o -name ".config" -o -name "config.mk" -o -name "*.dts*" -o -name "*.lua" \) -type f -print >$VIMP_PATH/cscope.files <CR><esc> :cd $VIMP_PATH  <CR><esc> : !cscope -RbkUq -f cscope.out <CR><esc>: cs add cscope.out <CR><esc> :!ctags --fields=+lS -L -<cscope.files <CR><esc>
 ":cs kill cscope.out <CR> 
 "nnoremap <silent> <F9> <Esc> :cd $PWD <CR> :! ctags -R --c-kinds=+pdx --fields=+iaS --extra=+q <CR>
 ""}
@@ -237,7 +237,7 @@ let NERDTreeIgnore+=['.*\.so$']
 let NERDTreeIgnore+=['.*\.svn$']
 let NERDTreeIgnore+=['.*\.bak$']
 let NERDTreeIgnore+=['.*\.mark$']
-"let NERDTreeIgnore+=['.*\.git*']
+"let NERDTreegnore+=['.*\.git*']
 "source insight
 let NERDTreeIgnore+=['.*\.IAB$']
 let NERDTreeIgnore+=['.*\.IAD$']
