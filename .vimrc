@@ -128,10 +128,10 @@ nmap <s-tab> <esc>:tabNext<CR>
 nmap 1 <ESC>:%! xxd -r<CR>
 nmap 4 <ESC>:set modifiable<CR> <ESC>:%! xxd<CR>
 
-nmap 5 <ESC>:cd $PWD <CR> :!echo -e "\#A simple makefile which automatic generation by fred.\nCROSS = \nCC ?= \$(CROSS)gcc\napp = \n\nsrc = \n\nobjs = \$(src:.c=.o) \n\nCFLAGS = -g -Wall \n\n\%.o : \%.c \n\t\$(CC) \$(CFLAGS) -c $< -o \$@ \n\n\$(app) : \$(objs) \n\t\$(CC) \$(CFLAGS) \$^ -o \$@ \n\nclean:\n\t@rm -rf \$(objs) \$(app)\n\t@echo clean finished.\n\n">Makefilet <cr>:bel split Makefilet<cr><cr>
+nmap 5 <ESC>:cd $PWD <CR> :!echo -e "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\# @file Makefile\n\# @brief Tell make how to compile and link a program.\n\# @author fred wang\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\n\\nCROSS = \nCC ?= \$(CROSS)gcc\napp = \n\nsrc = \n\nobjs = \$(src:.c=.o) \n\nCFLAGS = -g -Wall \n\n\%.o : \%.c \n\t\$(CC) \$(CFLAGS) -c $< -o \$@ \n\n\$(app) : \$(objs) \n\t\$(CC) \$(CFLAGS) \$^ -o \$@ \n\nclean:\n\t@rm -rf \$(objs) \$(app)\n\t@echo clean finished.\n\n">Makefilet <cr>:bel split Makefilet<cr><cr>
 
 "auto generated gitignore
-nmap 6 <ESC>:cd $PWD <CR> :!echo -e "\#vim files \n*.swp\n*.mark\ntags\ncscope.*\n\n\n\n \#backup files\n*.bak \n\n\n\# compiled files \n*.o\n*.elf\n*.ko\n*.so\n*.com\n*.class\n*.dll\n*.exe\n\n\n\n\n\# packages \n*.7z\n*.dmg\n*.gz\n*.iso\n*.jar\n*.rar\n*.tar\n*.zip\n*.bz2\n*.xz\n\n\n\n\# logs and databases \n*.sql\n*.sqlite\n\n\n\n\n\#self file\n\#.gitignore\n\n\n\n\n\# os generated files\#\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\nThumbs.db\n\#project files\n *.project\n\n\n\n\#source insight\n*.IAB\n*.IAD\n*.IMB\n*.IMD\n*.PFI\n*.PO\n*.PR\n*.PRI\n*.PS\n*.SearchResults\n*.WK3\n\n\#else\n\n*.mcs\n*.mptags\n*.tagsrc\n*.O\n*.cof\n*.err\n*.lst\n*.map\n*.dep\n*.as\n*.hxl\n*.pre\n*.p1\n*.rlf\n*.sym\n*.sdb\n*.obj\n\n\n\n\#current project \n\n\n\n\#funclist\n\n\n\n\n\n\n\n\#\#\#\#\3\n\!*.c\n\!*.h\n \n\n">gitignore <cr>:bel split gitignore<cr><cr>
+nmap 6 <ESC>:cd $PWD <CR> :!echo -e "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\# @file .gitignore\n\# @brief Tell git which files to ignore in your project dir\n\# @author fred wang\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\n\#vim files \n*.swp\n*.mark\ntags\ncscope.*\n\n\n\n \#backup files\n*.bak \n\n\n\# compiled files \n*.o\n*.elf\n*.ko\n*.so\n*.com\n*.class\n*.dll\n*.exe\n\n\n\n\n\# packages \n*.7z\n*.dmg\n*.gz\n*.iso\n*.jar\n*.rar\n*.tar\n*.zip\n*.bz2\n*.xz\n\n\n\n\# logs and databases \n*.sql\n*.sqlite\n\n\n\n\n\#self file\n\#.gitignore\n\n\n\n\n\# os generated files\#\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\nThumbs.db\n\#project files\n *.project\n\n\n\n\#source insight\n*.IAB\n*.IAD\n*.IMB\n*.IMD\n*.PFI\n*.PO\n*.PR\n*.PRI\n*.PS\n*.SearchResults\n*.WK3\n\n\#else\n\n*.mcs\n*.mptags\n*.tagsrc\n*.O\n*.cof\n*.err\n*.lst\n*.map\n*.dep\n*.as\n*.hxl\n*.pre\n*.p1\n*.rlf\n*.sym\n*.sdb\n*.obj\n\n\n\n\#current project \n\n\n\n\#funclist\n\n\n\n\n\n\n\n\#\#\#\#\3\n\!*.c\n\!*.h\n \n\n">gitignore <cr>:bel split gitignore<cr><cr>
 
 nmap 2 <ESC>:prev<CR>
 nmap 3 <ESC>:next<CR>
@@ -430,8 +430,9 @@ let g:neocomplcache_enable_quick_match = 1
 set mps+=<:>            "让<>可以使用%跳转  
 "set path=.
 "set path+=/usr/include
+set path+=$PWD
 set path+=$_KERNINC
-set path+=../**/**
+"set path+=../**/**
 
 
 "set tags+=~/.vim/tags/cpp
