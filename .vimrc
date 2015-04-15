@@ -20,6 +20,7 @@ Bundle 'c-standard-functions-highlight'
 Bundle 'largefile'
 Bundle 'DoxygenToolkit.vim'
 Bundle 'linuxsty.vim'
+Bundle 'LeaderF'
 
 
 Bundle 'echofunc.vim'
@@ -28,6 +29,8 @@ Bundle 'neocomplcache'
 Bundle 'OmniCppComplete'
 Bundle 'SnipMate'
 
+
+""""Bundle 'kien/ctrlp.vim.git'
 """"Bundle 'Valloric/YouCompleteMe'
 """"Bundle 'multi.vim'
 """"Bundle 'vim-scripts/AutoClose'
@@ -94,7 +97,7 @@ vmap <leader>w <esc>:w!<CR>
 
 nmap <leader>1 :tabnew <cr>:edit $PWD <CR>
 nmap <leader>2 :bel sp $PWD <CR>
-nmap <leader>3 :vsplit<CR> <C-l> :edit<space> 
+nmap <leader>3 :vsplit<CR> <C-l> :edit <C-R>=expand("<cword>")<CR>
 nmap <leader>4 <esc>:q!<CR>
 vmap <leader>4 <esc>:q!<CR>
 nmap <leader>5 <esc>:set readonly<CR>
@@ -105,7 +108,10 @@ vmap <leader>9 <esc>:set modifiable<CR> <esc>:colorscheme default<cr>
 nmap <leader>d <esc>:diffthis<CR> <esc>:colorscheme delek<cr>
 vmap <leader>d <esc>:diffthis<CR> <esc>:colorscheme delek<cr>
 nmap <leader>h <esc>:A<CR>
-"nmap <leader>e <esc>:
+nmap <leader>b <esc>:new <space>
+nmap <leader>r <esc>:!rm -rf<space>
+nmap <leader>t <esc>:bel sp <CR>:cd $PWD<CR>:Leaderf <cr>
+nmap <Leader>e <esc>:cd $PWD <CR> :Ack --ignore-dir==.git --type=nohtml <C-R>=expand("<cword>")<CR>
 "nmap <leader>f <esc>:
 nnoremap <silent> <leader>g :call AutoToggleCurline()<CR>
 nnoremap <silent> <leader>z :call AutoToggleList()<CR>
@@ -128,10 +134,10 @@ nmap <s-tab> <esc>:tabNext<CR>
 nmap 1 <ESC>:%! xxd -r<CR>
 nmap 4 <ESC>:set modifiable<CR> <ESC>:%! xxd<CR>
 
-nmap 5 <ESC>:cd $PWD <CR> :!echo -e "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\# @file Makefile\n\# @brief Tell make how to compile and link a program.\n\# @author fred wang\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\n\\nCROSS = \nCC ?= \$(CROSS)gcc\napp = \n\nsrc = \n\nobjs = \$(src:.c=.o) \n\nCFLAGS = -g -Wall \n\n\%.o : \%.c \n\t\$(CC) \$(CFLAGS) -c $< -o \$@ \n\n\$(app) : \$(objs) \n\t\$(CC) \$(CFLAGS) \$^ -o \$@ \n\nclean:\n\t@rm -rf \$(objs) \$(app)\n\t@echo clean finished.\n\n">Makefilet <cr>:bel split Makefilet<cr><cr>
+nmap 5 <ESC>:cd $PWD <CR> :!echo -e "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\# @file Makefile\n\# @brief Tell make how to compile and link a program.\n\# @author fred wang\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\n\\nCROSS = \nCC ?= \$(CROSS)gcc\napp = \n\nsrc = \n\nobjs = \$(src:.c=.o) \n\nCFLAGS = -g -Wall \n\n\%.o : \%.c \n\t\$(CC) \$(CFLAGS) -c $< -o \$@ \n\n\$(app) : \$(objs) \n\t\$(CC) \$(CFLAGS) \$^ -o \$@ \n\nclean:\n\t@rm -rf \$(objs) \$(app)\n\t@echo clean finished.\n\n">Makefilet <cr>:bel split $PWD/Makefilet<cr><cr>
 
 "auto generated gitignore
-nmap 6 <ESC>:cd $PWD <CR> :!echo -e "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\# @file .gitignore\n\# @brief Tell git which files to ignore in your project dir\n\# @author fred wang\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\n\#vim files \n*.swp\n*.mark\ntags\ncscope.*\n\n\n\n \#backup files\n*.bak \n\n\n\# compiled files \n*.o\n*.elf\n*.ko\n*.so\n*.com\n*.class\n*.dll\n*.exe\n\n\n\n\n\# packages \n*.7z\n*.dmg\n*.gz\n*.iso\n*.jar\n*.rar\n*.tar\n*.zip\n*.bz2\n*.xz\n\n\n\n\# logs and databases \n*.sql\n*.sqlite\n\n\n\n\n\#self file\n\#.gitignore\n\n\n\n\n\# os generated files\#\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\nThumbs.db\n\#project files\n *.project\n\n\n\n\#source insight\n*.IAB\n*.IAD\n*.IMB\n*.IMD\n*.PFI\n*.PO\n*.PR\n*.PRI\n*.PS\n*.SearchResults\n*.WK3\n\n\#else\n\n*.mcs\n*.mptags\n*.tagsrc\n*.O\n*.cof\n*.err\n*.lst\n*.map\n*.dep\n*.as\n*.hxl\n*.pre\n*.p1\n*.rlf\n*.sym\n*.sdb\n*.obj\n\n\n\n\#current project \n\n\n\n\#funclist\n\n\n\n\n\n\n\n\#\#\#\#\3\n\!*.c\n\!*.h\n \n\n">gitignore <cr>:bel split gitignore<cr><cr>
+nmap 6 <ESC>:cd $PWD <CR> :!echo -e "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\# @file .gitignore\n\# @brief Tell git which files to ignore in your project dir\n\# @author fred wang\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\n\#vim files \n*.swp\n*.mark\ntags\ncscope.*\n\n\n\n \#backup files\n*.bak \n\n\n\# compiled files \n*.o\n*.elf\n*.ko\n*.so\n*.com\n*.class\n*.dll\n*.exe\n\n\n\n\n\# packages \n*.7z\n*.dmg\n*.gz\n*.iso\n*.jar\n*.rar\n*.tar\n*.zip\n*.bz2\n*.xz\n\n\n\n\# logs and databases \n*.sql\n*.sqlite\n\n\n\n\n\#self file\n\#.gitignore\n\n\n\n\n\# os generated files\#\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\nThumbs.db\n\#project files\n *.project\n\n\n\n\#source insight\n*.IAB\n*.IAD\n*.IMB\n*.IMD\n*.PFI\n*.PO\n*.PR\n*.PRI\n*.PS\n*.SearchResults\n*.WK3\n\n\#else\n\n*.mcs\n*.mptags\n*.tagsrc\n*.O\n*.cof\n*.err\n*.lst\n*.map\n*.dep\n*.as\n*.hxl\n*.pre\n*.p1\n*.rlf\n*.sym\n*.sdb\n*.obj\n\n\n\n\#current project \n\n\n\n\#funclist\n\n\n\n\n\n\n\n\#\#\#\#\3\n\!*.c\n\!*.h\n \n\n">gitignore <cr>:bel split $PWD/gitignore<cr><cr>
 
 nmap 2 <ESC>:prev<CR>
 nmap 3 <ESC>:next<CR>
@@ -151,8 +157,8 @@ nmap + <ESC>:!echo "alias vi='export VIMP_PATH=\$PWD/.vimp; export _KERNINC=/me
 ""{ normal comb key map
 vmap mc : w! /tmp/buf<CR>
 nnoremap mv <esc>:r /tmp/buf<cr>
-nmap me <esc>:cd $PWD <CR> :Ack --ignore-dir==.git --type=nohtml <space>
-nmap mf <esc>:sp <CR>:cd $PWD <CR> :find <space>
+nmap me <esc>:cs find t <C-R>=expand("<cword>")<CR>
+nmap mc <esc>:bel copen<cr>
 ""Doxygen
 map fd : Dox<cr>
 map fl : DoxAuthor<cr>
@@ -161,7 +167,7 @@ map fl : DoxAuthor<cr>
 ""{ function key map
 nmap <F2> :cp<CR>
 nmap <F3> :cn<CR>
-map <F4> :! nautilus . <CR>
+map <F4> :! nautilus . <CR><ESC>
 "nnoremap <silent> <F5><F5> :cd $PWD <CR> :make clean -f $PWD/*akefile <CR> :bel copen <CR>
 nnoremap <silent> <F12> :cd $PWD <CR><esc> :make clean -f $PWD/?akefile <CR><esc> :bel copen <CR><esc>
 nnoremap <silent> <F5> :cd $PWD <CR><esc> :make -f $PWD/?akefile <CR><esc>:bel copen <CR><esc>
@@ -178,6 +184,20 @@ let g:vbookmark_bookmarkSaveFile=$VIMP_PATH . '/.vbookmark.mark'
 "let g:vbookmark_bookmarkSaveFile=expand('$PWD') . '/.vbookmark.mark'
 ""}
 
+""{ctrlp
+let g:ctrlp_map = '<leader>t'
+let g:ctrlp_working_path_mode = '0'
+
+""}
+
+""{Leaderf
+"exec 'nnoremap <silent>' g:Lf_ShortcutF ':<C-U>Leaderf<CR>'
+"exec 'nnoremap <silent>' g:Lf_ShortcutB ':<C-U>LeaderfBuffer<CR>'
+let g:Lf_ShortcutF = '<leader>='
+let g:Lf_ShortcutB = '<leader>6'
+let g:Lf_WindowPosition = 0
+let g:Lf_CacheDiretory = '/tmp/lf'
+""}
 
 ""{Doxygen
 let g:DoxygenToolkit_authorName="fred wang"

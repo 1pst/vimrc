@@ -95,6 +95,7 @@ Thumbs.db
 *.sdb
 *.obj
 funclist
+.vimp/
 
 
 
