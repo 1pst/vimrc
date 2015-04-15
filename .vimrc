@@ -147,7 +147,7 @@ nmap 7 <ESC>:cscope add $VIMP_PATH/cscope.out <cr>
 
 nmap 9 <ESC>:cs kill -1 <CR><esc> :!rm -rf $VIMP_PATH/*cscope* $VIMP_PATH/tags <CR><esc>
 
-nmap _ <ESC>:cd ~ <cr> <esc>:!tar cjf vim.tar.bz2 .vim ;nautilus ~ <CR>
+nmap _ <ESC>:cd ~ <cr> <esc>:!tar cjf vim.tar.bz2 .vim ;nautilus ~ <CR><esc>
 
 nmap + <ESC>:!echo "alias vi='export VIMP_PATH=\$PWD/.vimp; export _KERNINC=/media/working/prj/imx6/kernel/include;vim'" >> ~/.bashrc
 
