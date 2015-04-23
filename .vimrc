@@ -45,6 +45,8 @@ set backspace=indent,eol,start
 set fileencodings=utf-8,gbk,ucs-bom,cp936
 set nu
 set ai
+"Place case labels N characters from the indent of the switch()
+set cinoptions=:0
 set cindent
 set mouse=a
 set tabstop=8
