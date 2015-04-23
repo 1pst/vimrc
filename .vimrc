@@ -48,7 +48,6 @@ set ai
 set cindent
 set mouse=a
 set tabstop=8
-set expandtab
 set shiftwidth=8
 set incsearch "match in time 
 set hlsearch "
@@ -108,7 +107,7 @@ vmap <leader>9 <esc>:set modifiable<CR> <esc>:colorscheme default<cr>
 nmap <leader>d <esc>:diffthis<CR> <esc>:colorscheme delek<cr>
 vmap <leader>d <esc>:diffthis<CR> <esc>:colorscheme delek<cr>
 nmap <leader>h <esc>:A<CR>
-nmap <leader>b <esc>:new <space>
+nmap <leader>b <esc>:call Tar_pwd()
 nmap <leader>r <esc>:!rm -rf<space>
 nmap <leader>t <esc>:bel sp <CR>:cd $PWD<CR>:Leaderf <cr>
 nmap <Leader>e <esc>:cd $PWD <CR> :Ack --ignore-dir==.git --type=nohtml <C-R>=expand("<cword>")<CR>

@@ -4,7 +4,7 @@ endif
 function! AutoToggleCurline()
     if g:AutoCurline_enabled
 		setlocal cursorcolumn
-    else 
+    else
 		setlocal nocursorcolumn
     endif
     let g:AutoCurline_enabled = !g:AutoCurline_enabled
@@ -20,7 +20,7 @@ function! AutoToggleList()
     if g:AutoList_enabled
 		setlocal listchars=tab:>-,eol:<,nbsp:%,trail:@
 		setlocal list
-    else 
+    else
 		setlocal nolist
     endif
     let g:AutoList_enabled = !g:AutoList_enabled
@@ -37,7 +37,7 @@ function! AutoToggleFiletype()
     if g:Autofiletype_enabled
 		set filetype=asm
 		echo "filetype=asm"
-    else 
+    else
 		set filetype=c
 		echo "filetype=c"
     endif
@@ -55,7 +55,7 @@ function! AutoToggleModifiable()
     if g:Automodi_enabled
 		set modifiable
 		echo "modifiable"
-    else 
+    else
 		set nomodifiable
 		echo "nomodifable"
     endif
@@ -65,9 +65,9 @@ if !exists(':AutoToggleModifiable')
 	command -nargs=0 AutoToggleModifiable :call s:AutoToggleModifiable()
 endif
 
-function! Enter_lf() 
+function! Enter_lf()
 	let l:elflocal = strridx(getline("."),"}")
-	echo "elflocal :" . l:elflocal 
+	echo "elflocal :" . l:elflocal
 	if l:elflocal < 0
 	return "\<End>"
 	else
@@ -75,8 +75,8 @@ function! Enter_lf()
 	call cursor(0,l:elflocal + 1)
 	return l:elfenter
 	endif
-	endfunction 
-function! Enter_quot() 
+	endfunction
+function! Enter_quot()
 	while(1)
 	let l:elflocal = strridx(getline("."),")")
 	if l:elflocal >= 0
@@ -89,7 +89,7 @@ function! Enter_quot()
 	let l:elflocal = strridx(getline("."),"}")
 	break
 	endwhile
-	echo "elflocal :" . l:elflocal 
+	echo "elflocal :" . l:elflocal
 	if l:elflocal < 0
 	return ""
 	else
@@ -97,14 +97,24 @@ function! Enter_quot()
 	call cursor(0,l:elflocal + 1)
 	return l:elfenter
 	endif
-	endfunction 
-function! Local_bracket() 
+	endfunction
+function! Tar_pwd()
+	let l:elflocal = strridx($PWD,"/")
+	if l:elflocal < 0
+	return "xxx"
+	else
+	let l:name = strpart($PWD, l:elflocal + 1)
+        let l:cmd='cd $PWD && tar cvf '.l:name.'.tar * ; nautilus $PWD'
+        call system(l:cmd)
+	endif
+	endfunction
+function! Local_bracket()
 	while(1)
 	let l:local = strridx(getline("."),"\"")
 	if l:local >= 0
 	break
 	endif
-	let l:local = strridx(getline("."),"}") 
+	let l:local = strridx(getline("."),"}")
 	if l:local >= 0
 	break
 	endif
@@ -122,4 +132,4 @@ function! Local_bracket()
 	call cursor(0,l:local )
 	return l:enter
 	endif
-	endfunction 
+	endfunction
