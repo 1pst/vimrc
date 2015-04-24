@@ -3,7 +3,7 @@
 "let path = '~/some/path/here'
 "call vundle#rc(path)
 
-set nocompatible 
+set nocompatible
 ""for vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -13,7 +13,7 @@ Bundle 'The-NERD-tree'
 Bundle 'cscope.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Tagbar'
-Bundle 'a.vim' 
+Bundle 'a.vim'
 Bundle 'ack.vim'
 Bundle 'YankRing.vim'
 Bundle 'c-standard-functions-highlight'
@@ -40,7 +40,7 @@ Bundle 'SnipMate'
 """"Bundle 'srcexpl'
 
 let mapleader=","
-set backspace=indent,eol,start 
+set backspace=indent,eol,start
 "set fileencodings=cp936,utf-8,gbk,ucs-bom
 set fileencodings=utf-8,gbk,ucs-bom,cp936
 set nu
@@ -51,11 +51,11 @@ set cindent
 set mouse=a
 set tabstop=8
 set shiftwidth=8
-set incsearch "match in time 
+set incsearch "match in time
 set hlsearch "
-"set ignorecase 
+"set ignorecase
 set ignorecase smartcase "smartcase，
-set filetype=diff "default file type detection 
+set filetype=diff "default file type detection
 set showmatch  "
 set ruler "show the line and column number of the cursor position
 set autochdir "auto change dir
@@ -113,7 +113,7 @@ nmap <leader>b <esc>:call Tar_pwd()
 nmap <leader>r <esc>:!rm -rf<space>
 nmap <leader>t <esc>:bel sp <CR>:cd $PWD<CR>:Leaderf <cr>
 nmap <Leader>e <esc>:cd $PWD <CR> :Ack --ignore-dir==.git --type=nohtml <C-R>=expand("<cword>")<CR>
-nmap <Leader>f <esc>:cd $PWD <CR> :vim <C-R>=expand("<cword>")<CR> ** 
+nmap <Leader>f <esc>:cd $PWD <CR> :vim <C-R>=expand("<cword>")<CR> ** <space>
 "nmap <leader>f <esc>:
 nnoremap <silent> <leader>g :call AutoToggleCurline()<CR>
 nnoremap <silent> <leader>z :call AutoToggleList()<CR>
@@ -233,12 +233,12 @@ nnoremap <silent> <F8> : NERDTreeToggle<CR>
 "nnoremap <silent> <F7> : NERDTreeToggle<CR>
 "nnoremap <F7> : NERDTreeToggle<CR>
 let NERDTreeWinSize=20
-let g:NERDChristmasTree=1 
-let g:NERDTreeShowHidden=1 
-let g:NERDTreeWinPos='right'  
-let g:NERDTreeHighlightCursorline=0 
+let g:NERDChristmasTree=1
+let g:NERDTreeShowHidden=1
+let g:NERDTreeWinPos='right'
+let g:NERDTreeHighlightCursorline=0
 let g:NERDTreeDirArrows=1
-"let NERDTreeShowBookmarks=1 
+"let NERDTreeShowBookmarks=1
 let NERDTreeAutoCenter=1
 
 "call s:initVariable("g:NERDTreeBookmarksFile", expand('$HOME') . '/.NERDTreeBookmarks')
@@ -464,5 +464,3 @@ set path+=$_KERNINC
 set statusline=%<%f\ [%{&fileencoding}]\ %h%m%r%=0x%B\ \ %-16.(%l-%L,%c%V%)\ %P
 set tags=$VIMP_PATH/tags
 "set tags=$PWD/tags;
-
-
