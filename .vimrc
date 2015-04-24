@@ -113,7 +113,7 @@ nmap <leader>b <esc>:call Tar_pwd()
 nmap <leader>r <esc>:!rm -rf<space>
 nmap <leader>t <esc>:bel sp <CR>:cd $PWD<CR>:Leaderf <cr>
 nmap <Leader>e <esc>:cd $PWD <CR> :Ack --ignore-dir==.git --type=nohtml <C-R>=expand("<cword>")<CR>
-nmap <Leader>f <esc>:cd $PWD <CR> :vim <C-R>=expand("<cword>")<CR> ** <space>
+nmap <Leader>f <esc>:cd $PWD <CR> :vim <C-R>=expand("<cword>")<CR> **<left><left><left>
 "nmap <leader>f <esc>:
 nnoremap <silent> <leader>g :call AutoToggleCurline()<CR>
 nnoremap <silent> <leader>z :call AutoToggleList()<CR>
