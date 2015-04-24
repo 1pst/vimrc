@@ -101,7 +101,7 @@ nmap <leader>2 :bel sp $PWD <CR>
 nmap <leader>3 :vsplit<CR> <C-l> :edit <C-R>=expand("<cword>")<CR>
 nmap <leader>4 <esc>:q!<CR>
 vmap <leader>4 <esc>:q!<CR>
-nmap <leader>5 <esc>:set readonly<CR>
+nmap <leader>5 <esc>:!checkpatch.pl -f <c-r>=expand("%") <cr><cr>
 nmap <leader>7 :set fileformat=unix<CR>
 nmap <leader>9 <esc>:set modifiable<CR> <esc>:colorscheme default<cr>
 vmap <leader>9 <esc>:set modifiable<CR> <esc>:colorscheme default<cr>
