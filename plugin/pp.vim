@@ -47,6 +47,23 @@ if !exists(':AutoToggleFiletype')
 	command -nargs=0 AutoToggleFiletype :call s:AutoToggleFiletype()
 endif
 
+if !exists("g:AutoPaste")
+    let g:AutoPaste = 1
+endi
+function! AutoTogglePaste()
+    if g:AutoPaste
+		set paste
+		echo "set paste"
+    else
+		set nopaste
+		echo "set nopaste"
+    endif
+    let g:AutoPaste = !g:AutoPaste
+endfunction
+if !exists(':AutoTogglePaste')
+	command -nargs=0 AutoTogglePaste :call s:AutoTogglePaste()
+endif
+
 
 if !exists("g:Automodi_enabled")
     let g:Automodi_enabled = 1

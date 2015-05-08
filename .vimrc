@@ -102,7 +102,9 @@ nmap <leader>3 :vsplit<CR> <C-l> :edit <C-R>=expand("<cword>")<CR>
 nmap <leader>4 <esc>:q!<CR>
 vmap <leader>4 <esc>:q!<CR>
 nmap <leader>5 <esc>:!checkpatch.pl -f <c-r>=expand("%") <cr><cr>
+"let g:Lf_ShortcutB = '<leader>6'
 nmap <leader>7 :set fileformat=unix<CR>
+nnoremap <silent> <leader>8 :call AutoTogglePaste()<CR>
 nmap <leader>9 <esc>:set modifiable<CR> <esc>:colorscheme default<cr>
 vmap <leader>9 <esc>:set modifiable<CR> <esc>:colorscheme default<cr>
 
@@ -136,16 +138,17 @@ nmap <s-tab> <esc>:tabNext<CR>
 nmap 1 <ESC>:%! xxd -r<CR>
 nmap 4 <ESC>:set modifiable<CR> <ESC>:%! xxd<CR>
 
-nmap 5 <ESC>:cd $PWD <CR> :!echo -e "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\# @file Makefile\n\# @brief Tell make how to compile and link a program.\n\# @author fred wang\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\n\\nCROSS ?= \nCC ?= \$(CROSS)gcc\nCXX ?= \$(CROSS)g++\napp = \n\n\#SRCDIRS = \n\#src = \$(foreach dir, \$(SRCDIRS), \$(wildcard \$(dir)/*.c))\n\#src = \$(foreach dir, \$(wildcard *), \$(wildcard \$(dir)/Makefile))\nsrc = \ncppsrc = \n\nobjs = \$(src:.c=.o) \$(cppsrc:.cpp=.o) \n\nCFLAGS = -g -Wall \n\nCPPFLAGS = -g -Wall \n\nLDDFLAGS = \n\n\%.o: \%.c \n\t\$(CC) \$(CFLAGS) -c $< -o \$@ \n\n\%.o: \%.cpp \n\t\$(CXX) \$(CPPFLAGS) -c $< -o \$@ \n\n\$(app): \$(objs) \n\t\$(CC) \$(LDDFLAGS) \$^ -o \$@ \n\nclean:\n\t@rm -rf \$(objs) \$(app)\n\t@echo clean finished.\n\n.PHONY: clean">Makefile.tmp <cr>:bel split $PWD/Makefile.tmp<cr><cr>
+nmap 5 <ESC>:cd $PWD <CR> :!echo -e "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\# @file Makefile\n\# @brief Tell make how to compile and link a program.\n\# @author fred wang\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\n\\nCROSS ?=\nCC ?= \$(CROSS)gcc\nCXX ?= \$(CROSS)g++\napp =\n\n\#SRCDIRS =\n\#src = \$(foreach dir, \$(SRCDIRS), \$(wildcard \$(dir)/*.c))\n\#src = \$(foreach dir, \$(wildcard *), \$(wildcard \$(dir)/Makefile))\nsrc =\ncppsrc =\n\nobjs = \$(src:.c=.o) \$(cppsrc:.cpp=.o)\n\nLIBDIRS =\n\nLIBS =\n\nCFLAGS = -g -Wall\n\nCPPFLAGS = -g -Wall\n\nLDDFLAGS =\n\n\%.o: \%.c\n\t\$(CC) \$(CFLAGS) -c $< -o \$@\n\n\%.o: \%.cpp\n\t\$(CXX) \$(CPPFLAGS) -c $< -o \$@\n\n\$(app): \$(objs)\n\t\$(CC) \$(LDDFLAGS) \$(LIBDIRS) \$^ -o \$@ \$(LIBS)\n\nclean:\n\t@rm -rf \$(objs) \$(app)\n\t@echo clean finished.\n\n.PHONY: clean">Makefile.tmp <cr>:bel split $PWD/Makefile.tmp<cr><cr>
 
 "auto generated gitignore
-nmap 6 <ESC>:cd $PWD <CR> :!echo -e "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\# @file .gitignore\n\# @brief Tell git which files to ignore in your project dir\n\# @author fred wang\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\n\#vim files \n*.swp\n*.mark\ntags\ncscope.*\n\n\n\n \#backup files\n*.bak \n\n\n\# compiled files \n*.o\n*.elf\n*.ko\n*.so\n*.com\n*.class\n*.dll\n*.exe\n\n\n\n\n\# packages \n*.7z\n*.dmg\n*.gz\n*.iso\n*.jar\n*.rar\n*.tar\n*.zip\n*.bz2\n*.xz\n\n\n\n\# logs and databases \n*.sql\n*.sqlite\n\n\n\n\n\#self file\n\#.gitignore\n\n\n\n\n\# os generated files\#\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\nThumbs.db\n\#project files\n *.project\n\n\n\n\#source insight\n*.IAB\n*.IAD\n*.IMB\n*.IMD\n*.PFI\n*.PO\n*.PR\n*.PRI\n*.PS\n*.SearchResults\n*.WK3\n\n\#else\n\n*.mcs\n*.mptags\n*.tagsrc\n*.O\n*.cof\n*.err\n*.lst\n*.map\n*.dep\n*.as\n*.hxl\n*.pre\n*.p1\n*.rlf\n*.sym\n*.sdb\n*.obj\n\n\n\n\#current project \n\n\n\n\#funclist\n\n\n\n\n\n\n\n\#\#\#\#\3\n\!*.c\n\!*.h\n \n\n">gitignore <cr>:bel split $PWD/gitignore<cr><cr>
+nmap 6 <ESC>:cd $PWD <CR> :!echo -e "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\# @file .gitignore\n\# @brief Tell git which files to ignore in your project dir\n\# @author fred wang\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\n\#vim files\n*.swp\n*.mark\ntags\ncscope.*\n\n\n\n \#backup files\n*.bak\n\n\n\# compiled files\n*.o\n*.elf\n*.ko\n*.so\n*.com\n*.class\n*.dll\n*.exe\n\n\n\n\n\# packages\n*.7z\n*.dmg\n*.gz\n*.iso\n*.jar\n*.rar\n*.tar\n*.zip\n*.bz2\n*.xz\n\n\n\n\# logs and databases\n*.sql\n*.sqlite\n\n\n\n\n\#self file\n\#.gitignore\n\n\n\n\n\# os generated files\#\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\nThumbs.db\n\#project files\n *.project\n\n\n\n\#source insight\n*.IAB\n*.IAD\n*.IMB\n*.IMD\n*.PFI\n*.PO\n*.PR\n*.PRI\n*.PS\n*.SearchResults\n*.WK3\n\n\#else\n\n*.mcs\n*.mptags\n*.tagsrc\n*.O\n*.cof\n*.err\n*.lst\n*.map\n*.dep\n*.as\n*.hxl\n*.pre\n*.p1\n*.rlf\n*.sym\n*.sdb\n*.obj\n\n\n\n\#current project\n\n\n\n\#funclist\n\n\n\n\n\n\n\n\#\#\#\#\n\!*.c\n\!*.h\n\!*.cpp\n\!*.hh">gitignore <cr>:bel split $PWD/gitignore<cr><cr>
 
 nmap 2 <ESC>:prev<CR>
 nmap 3 <ESC>:next<CR>
 
 """custom variable
 nmap 7 <ESC>:cscope add $VIMP_PATH/cscope.out <cr>
+
 
 nmap 9 <ESC>:cs kill -1 <CR><esc> :!rm -rf $VIMP_PATH/*cscope* $VIMP_PATH/tags <CR><esc>
 
