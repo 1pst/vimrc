@@ -105,13 +105,13 @@ nmap <leader>5 <esc>:!checkpatch.pl -f <c-r>=expand("%") <cr><cr>
 "let g:Lf_ShortcutB = '<leader>6'
 nmap <leader>7 :set fileformat=unix<CR>
 nnoremap <silent> <leader>8 :call AutoTogglePaste()<CR>
-nmap <leader>9 <esc>:set modifiable<CR> <esc>:colorscheme default<cr>
-vmap <leader>9 <esc>:set modifiable<CR> <esc>:colorscheme default<cr>
+nmap <leader>9 <esc>:call Tar_pwd()
 
 nmap <leader>d <esc>:diffthis<CR> <esc>:colorscheme delek<cr>
 vmap <leader>d <esc>:diffthis<CR> <esc>:colorscheme delek<cr>
+nmap <leader>b <esc>:set modifiable<CR> <esc>:colorscheme default<cr>
+vmap <leader>b <esc>:set modifiable<CR> <esc>:colorscheme default<cr>
 nmap <leader>h <esc>:A<CR>
-nmap <leader>b <esc>:call Tar_pwd()
 nmap <leader>r <esc>:!rm -rf<space>
 nmap <leader>t <esc>:bel sp <CR>:cd $PWD<CR>:Leaderf <cr>
 nmap <Leader>e <esc>:cd $PWD <CR> :Ack --ignore-dir==.git --type=nohtml <C-R>=expand("<cword>")<CR>
@@ -162,8 +162,11 @@ nmap + <ESC>:!echo "alias vi='export VIMP_PATH=\$PWD/.vimp; export _KERNINC=/me
 ""{ normal comb key map
 vmap mc : w! /tmp/buf<CR>
 nnoremap mv <esc>:r /tmp/buf<cr>
-nmap me <esc>:cs find t <C-R>=expand("<cword>")<CR>
-nmap mc <esc>:bel copen<cr>
+nmap ma <esc>:vertical resize +1<cr>
+nmap mb <esc>:vertical resize -1<cr>
+nmap mc <esc>:resize +1<cr>
+nmap md <esc>:resize -1<cr>
+nmap mo <esc>:bel copen<cr>
 ""Doxygen
 map fd : Dox<cr>
 map fl : DoxAuthor<cr>

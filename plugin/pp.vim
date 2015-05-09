@@ -116,12 +116,13 @@ function! Enter_quot()
 	endif
 	endfunction
 function! Tar_pwd()
-	let l:elflocal = strridx($PWD,"/")
+	let l:pwd = $PWD
+	let l:elflocal = strridx(l:pwd,"/")
 	if l:elflocal < 0
 	return "xxx"
 	else
-	let l:name = strpart($PWD, l:elflocal + 1)
-        let l:cmd='cd $PWD && tar cvf '.l:name.'.tar * ; nautilus $PWD'
+	let l:name = strpart(l:pwd, l:elflocal + 1)
+        let l:cmd='cd '.l:pwd.' && tar cvf '.l:name.'.tar * ; nautilus '.l:pwd.';'
         call system(l:cmd)
 	endif
 	endfunction
