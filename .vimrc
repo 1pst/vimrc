@@ -149,6 +149,8 @@ nmap 3 <ESC>:next<CR>
 """custom variable
 nmap 7 <ESC>:cscope add $VIMP_PATH/cscope.out <cr>
 
+nmap 8 <ESC>:!sdcv -n <C-R>=expand("<cword>")<CR> > /tmp/sdcv-abc<cr>:bel 10 split /tmp/sdcv-abc<cr>
+
 
 nmap 9 <ESC>:cs kill -1 <CR><esc> :!rm -rf $VIMP_PATH/*cscope* $VIMP_PATH/tags <CR><esc>
 
