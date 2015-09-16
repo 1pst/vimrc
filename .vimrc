@@ -45,17 +45,13 @@ set backspace=indent,eol,start
 set fileencodings=utf-8,gbk,ucs-bom,cp936
 set nu
 set ai
-"Place case labels N characters from the indent of the switch()
-set cinoptions=:0
-set cindent
+set autoindent
 set mouse=a
-set tabstop=8
-set shiftwidth=8
 set incsearch "match in time
 set hlsearch "
 "set ignorecase
 set ignorecase smartcase "smartcase，
-set filetype=diff "default file type detection
+"set filetype=diff "default file type detection
 set showmatch  "
 set ruler "show the line and column number of the cursor position
 set autochdir "auto change dir
@@ -65,6 +61,13 @@ set dir=/tmp
 syntax on
 filetype plugin indent on
 let tagfiles=$VIMP_PATH . '/tags'
+set cindent
+"Place case labels N characters from the indent of the switch()
+set cinoptions=:0
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set smarttab
 
 
 
@@ -101,14 +104,14 @@ nmap <leader>2 :bel sp $PWD <CR>
 nmap <leader>3 :vsplit<CR> <C-l> :edit <C-R>=expand("<cword>")<CR>
 nmap <leader>4 <esc>:q!<CR>
 vmap <leader>4 <esc>:q!<CR>
-nmap <leader>5 <esc>:!checkpatch.pl -f <c-r>=expand("%") <cr><cr>
+nmap <leader>5 <esc>:!$HOME/.vim/bin/checkpatch.pl -f <c-r>=expand("%") <cr><cr>
 "let g:Lf_ShortcutB = '<leader>6'
 nmap <leader>7 :set fileformat=unix<CR>
 nnoremap <silent> <leader>8 :call AutoTogglePaste()<CR>
 nmap <leader>9 <esc>:call Tar_pwd()
 
-nmap <leader>d <esc>:diffthis<CR> <esc>:colorscheme delek<cr>
-vmap <leader>d <esc>:diffthis<CR> <esc>:colorscheme delek<cr>
+nmap <leader>d <esc>:diffthis<CR> <esc>:colorscheme delek<cr>:set readonly<cr>
+vmap <leader>d <esc>:diffthis<CR> <esc>:colorscheme delek<cr>:set readonly<cr>
 nmap <leader>b <esc>:set modifiable<CR> <esc>:colorscheme default<cr>
 vmap <leader>b <esc>:set modifiable<CR> <esc>:colorscheme default<cr>
 nmap <leader>h <esc>:A<CR>
@@ -119,7 +122,8 @@ nmap <Leader>f <esc>:cd $PWD <CR> :vim <C-R>=expand("<cword>")<CR> **<left><left
 "nmap <leader>f <esc>:
 nnoremap <silent> <leader>g :call AutoToggleCurline()<CR>
 nnoremap <silent> <leader>z :call AutoToggleList()<CR>
-nnoremap <silent> <leader>m :call AutoToggleFiletype()<CR>
+"nnoremap <silent> <leader>m :call AutoToggleFiletype()<CR>
+nnoremap <silent> <leader>k :call AutoToggleKernstyle()<CR>
 ""}
 
 
@@ -138,7 +142,7 @@ nmap <s-tab> <esc>:tabNext<CR>
 nmap 1 <ESC>:%! xxd -r<CR>
 nmap 4 <ESC>:set modifiable<CR> <ESC>:%! xxd<CR>
 
-nmap 5 <ESC>:cd $PWD <CR> :!echo -e "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\# @file Makefile\n\# @brief Tell make how to compile and link a program.\n\# @author fred wang\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\n\\nCROSS ?=\nCC ?= \$(CROSS)gcc\nCXX ?= \$(CROSS)g++\napp =\n\n\#SRCDIRS =\n\#src = \$(foreach dir, \$(SRCDIRS), \$(wildcard \$(dir)/*.c))\n\#src = \$(foreach dir, \$(wildcard *), \$(wildcard \$(dir)/Makefile))\nsrc =\ncppsrc =\n\nobjs = \$(src:.c=.o) \$(cppsrc:.cpp=.o)\n\nLIBDIRS =\n\nLIBS =\n\nCFLAGS = -g -Wall\n\nCPPFLAGS = -g -Wall\n\nLDDFLAGS =\n\n\%.o: \%.c\n\t\$(CC) \$(CFLAGS) -c $< -o \$@\n\n\%.o: \%.cpp\n\t\$(CXX) \$(CPPFLAGS) -c $< -o \$@\n\n\$(app): \$(objs)\n\t\$(CC) \$(LDDFLAGS) \$(LIBDIRS) \$^ -o \$@ \$(LIBS)\n\nclean:\n\t@rm -rf \$(objs) \$(app)\n\t@echo clean finished.\n\n.PHONY: clean">Makefile.tmp <cr>:bel split $PWD/Makefile.tmp<cr><cr>
+nmap 5 <ESC>:cd $PWD <CR> :!echo -e "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\# @file Makefile\n\# @brief Tell make how to compile and link a program.\n\# @author fred wang\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\n\\nCROSS ?=\nCC ?= \$(CROSS)gcc\nCXX ?= \$(CROSS)g++\napp =\n\n\#SRCDIRS =\n\#src = \$(foreach dir, \$(SRCDIRS), \$(wildcard \$(dir)/*.c))\n\#src = \$(foreach dir, \$(wildcard *), \$(wildcard \$(dir)/*akefile))\nsrc =\ncppsrc =\n\nCFLAGS = -g -Wall\nCPPFLAGS = -g -Wall\nLDDFLAGS =\n\nINCDIRS =\nLIBDIRS =\nLIBS =\n\nobjs := \$(src:.c=.o) \$(cppsrc:.cpp=.o)\nheads := \$(src:.c=.h) \$(src:.cpp=.h)\n\n\$(app): \$(objs)\n\t\$(CC) \$(LDDFLAGS) \$(LIBDIRS) \$^ -o \$@ \$(LIBS)\n\n\%.o: \%.c\n\t\$(CC) \$(CFLAGS) \$(INCDIRS) -c $< -o \$@\n\n\%.o: \%.cpp\n\t\$(CXX) \$(CPPFLAGS) \$(INCDIRS) -c $< -o \$@\n\nclean:\n\t@rm -rf \$(objs) \$(app)\n\t@echo clean finished.\n\n.PHONY: clean">Makefile.tmp <cr>:bel split $PWD/Makefile.tmp<cr><cr>
 
 "auto generated gitignore
 nmap 6 <ESC>:cd $PWD <CR> :!echo -e "\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\# @file .gitignore\n\# @brief Tell git which files to ignore in your project dir\n\# @author fred wang\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\n\n\#vim files\n*.swp\n*.mark\ntags\ncscope.*\n\n\n\n \#backup files\n*.bak\n\n\n\# compiled files\n*.o\n*.elf\n*.ko\n*.so\n*.com\n*.class\n*.dll\n*.exe\n\n\n\n\n\# packages\n*.7z\n*.dmg\n*.gz\n*.iso\n*.jar\n*.rar\n*.tar\n*.zip\n*.bz2\n*.xz\n\n\n\n\# logs and databases\n*.sql\n*.sqlite\n\n\n\n\n\#self file\n\#.gitignore\n\n\n\n\n\# os generated files\#\n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\nThumbs.db\n\#project files\n *.project\n\n\n\n\#source insight\n*.IAB\n*.IAD\n*.IMB\n*.IMD\n*.PFI\n*.PO\n*.PR\n*.PRI\n*.PS\n*.SearchResults\n*.WK3\n\n\#else\n\n*.mcs\n*.mptags\n*.tagsrc\n*.O\n*.cof\n*.err\n*.lst\n*.map\n*.dep\n*.as\n*.hxl\n*.pre\n*.p1\n*.rlf\n*.sym\n*.sdb\n*.obj\n\n\n\n\#current project\n\n\n\n\#funclist\n\n\n\n\n\n\n\n\#\#\#\#\n\!*.c\n\!*.h\n\!*.cpp\n\!*.hh">gitignore <cr>:bel split $PWD/gitignore<cr><cr>
@@ -164,6 +168,8 @@ nmap + <ESC>:!echo "alias vi='export VIMP_PATH=\$PWD/.vimp; export _KERNINC=/me
 ""{ normal comb key map
 vmap mc : w! /tmp/buf<CR>
 nnoremap mv <esc>:r /tmp/buf<cr>
+nmap mm <esc>:call AutoToggleFiletype()<CR>
+"nmap mm <esc>:call AutoToggleModi()<CR>
 nmap ma <esc>:vertical resize +1<cr>
 nmap mb <esc>:vertical resize -1<cr>
 nmap mc <esc>:resize +1<cr>
@@ -182,8 +188,8 @@ map <F4> :! nautilus . <CR><ESC>
 nnoremap <silent> <F12> :cd $PWD <CR><esc> :make clean -f $PWD/?akefile <CR><esc> :bel copen <CR><esc>
 nnoremap <silent> <F5> :cd $PWD <CR><esc> :make -f $PWD/?akefile <CR><esc>:bel copen <CR><esc>
 "echo "Attention: according to kernel,only generate arch of ARM index"
-nnoremap <silent> <F9> <Esc>:cd $PWD <CR><esc> :!mkdir -p $VIMP_PATH <CR><esc> :!find $PWD/ \( -path $PWD/arch/alpha -o -path $PWD/arch/arc -o -path  $PWD/arch/avr32 -o -path  $PWD/arch/blackfin -o -path  $PWD/arch/c6x -o -path  $PWD/arch/cris -o -path  $PWD/arch/frv -o -path  $PWD/arch/h8300 -o -path  $PWD/arch/hexagon -o -path  $PWD/arch/ia64 -o -path  $PWD/arch/m32r -o -path  $PWD/arch/m68k -o -path  $PWD/arch/metag -o -path  $PWD/arch/microblaze -o -path  $PWD/arch/mips -o -path  $PWD/arch/mn10300 -o -path  $PWD/arch/openrisc -o -path  $PWD/arch/parisc -o -path  $PWD/arch/powerpc -o -path  $PWD/arch/s390 -o -path  $PWD/arch/score -o -path  $PWD/arch/sh -o -path  $PWD/arch/tile -o -path  $PWD/arch/sparc -o -path  $PWD/arch/um -o -path  $PWD/arch/unicore32 -o -path  $PWD/arch/x86 -o -path  $PWD/arch/xtensa \) -prune -o \( -name "*akefile" -o -name "*.c" -o -name "*.C" -o -name "*.cpp" -name "*.CPP" -o -name "*.cc" -o -name "*.CC" -o -name "*.h" -o -name "*.H" -o -name "*.s" -o -name "*.S" -o -name "*.asm" -o -name "*.ASM" -o -name "*defconfig" -o -name ".config" -o -name "config.mk" -o -name "*.dts*" -o -name "*.lua" \) -type f -print >$VIMP_PATH/cscope.files <CR><esc> :cd $VIMP_PATH  <CR><esc> : !cscope -RbkUq -f cscope.out <CR><esc>: cs add cscope.out <CR><esc> :!ctags --fields=+lS -L -<cscope.files <CR><esc>
 ":cs kill cscope.out <CR> 
+nnoremap <silent> <F9> <Esc>:cd $PWD <CR><esc> :!mkdir -p $VIMP_PATH <CR><esc> :!find $PWD/ \( -path $PWD/arch/alpha -o -path $PWD/arch/arc -o -path  $PWD/arch/avr32 -o -path  $PWD/arch/blackfin -o -path  $PWD/arch/c6x -o -path  $PWD/arch/cris -o -path  $PWD/arch/frv -o -path  $PWD/arch/h8300 -o -path  $PWD/arch/hexagon -o -path  $PWD/arch/ia64 -o -path  $PWD/arch/m32r -o -path  $PWD/arch/m68k -o -path  $PWD/arch/metag -o -path  $PWD/arch/microblaze -o -path  $PWD/arch/mips -o -path  $PWD/arch/mn10300 -o -path  $PWD/arch/openrisc -o -path  $PWD/arch/parisc -o -path  $PWD/arch/powerpc -o -path  $PWD/arch/s390 -o -path  $PWD/arch/score -o -path  $PWD/arch/sh -o -path  $PWD/arch/tile -o -path  $PWD/arch/sparc -o -path  $PWD/arch/um -o -path  $PWD/arch/unicore32 -o -path  $PWD/arch/x86 -o -path  $PWD/arch/xtensa -o -path $PWD/extra -o -path $PWD/doc -o -path $PWD/exclusion \) -prune -o \( -name "*akefile" -o -name "*.c" -o -name "*.C" -o -name "*.cpp" -name "*.CPP" -o -name "*.cc" -o -name "*.CC" -o -name "*.h" -o -name "*.H" -o -name "*.s" -o -name "*.S" -o -name "*.asm" -o -name "*.ASM" -o -name "*defconfig" -o -name ".config" -o -name "config.mk" -o -name "*.dts*" -o -name "*.lua" \) -type f -print >$VIMP_PATH/cscope.files <CR><esc> :cd $VIMP_PATH  <CR><esc> : !cscope -RbkUq -f cscope.out <CR><esc>: cs add cscope.out <CR><esc> :!ctags --fields=+lS -L -<cscope.files <CR><esc>
 "nnoremap <silent> <F9> <Esc> :cd $PWD <CR> :! ctags -R --c-kinds=+pdx --fields=+iaS --extra=+q <CR>
 ""}
 

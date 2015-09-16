@@ -4,6 +4,7 @@ endif
 function! AutoToggleCurline()
     if g:AutoCurline_enabled
 		setlocal cursorcolumn
+		echo "cursorcolumn"
     else
 		setlocal nocursorcolumn
     endif
@@ -13,6 +14,31 @@ if !exists(':AutoToggleCurline')
 	command -nargs=0 AutoToggleCurline :call s:AutoToggleCurline()
 endif
 
+
+if !exists("g:AutoChgKernstyle")
+    let g:AutoChgKernstyle= 1
+endif
+function! AutoToggleKernstyle()
+    if g:AutoChgKernstyle
+		set tabstop=8
+		set shiftwidth=8
+		set softtabstop=8
+		echo "kernel style"
+    else
+		set tabstop=4
+		set shiftwidth=4
+		set softtabstop=4
+		echo ""
+    endif
+    let g:AutoChgKernstyle = !g:AutoChgKernstyle
+endfunction
+if !exists(':AutoToggleKernstyle')
+	command -nargs=0 AutoToggleKernstyle :call s:AutoToggleKernstyle()
+endif
+
+
+
+
 if !exists("g:AutoList_enabled")
     let g:AutoList_enabled = 1
 endif
@@ -20,6 +46,7 @@ function! AutoToggleList()
     if g:AutoList_enabled
 		setlocal listchars=tab:>-,eol:<,nbsp:%,trail:@
 		setlocal list
+		echo "list"
     else
 		setlocal nolist
     endif
@@ -29,6 +56,22 @@ if !exists(':AutoToggleList')
 	command -nargs=0 AutoToggleList :call s:AutoToggleList()
 endif
 
+if !exists("g:AutoModi_enabled")
+    let g:AutoModi_enabled = 1
+endif
+function! AutoToggleModi()
+    if g:AutoModi_enabled
+		setlocal nomodifiable
+		echo "nomodifiable"
+    else
+		setlocal modifiable
+		echo "modifiable"
+    endif
+    let g:AutoModi_enabled = !g:AutoModi_enabled
+endfunction
+if !exists(':AutoToggleModi')
+	command -nargs=0 AutoToggleModi :call s:AutoToggleModi()
+endif
 
 if !exists("g:Autofiletype_enabled")
     let g:Autofiletype_enabled = 1
@@ -53,10 +96,10 @@ endi
 function! AutoTogglePaste()
     if g:AutoPaste
 		set paste
-		echo "set paste"
+		echo "paste"
     else
 		set nopaste
-		echo "set nopaste"
+		echo "nopaste"
     endif
     let g:AutoPaste = !g:AutoPaste
 endfunction
